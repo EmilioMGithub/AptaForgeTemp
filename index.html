@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AptaForge — Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson: #DC143C;
+    --crimson-dark: #A50E2D;
+    --crimson-deep: #7B0A21;
+    --off-white: #FAF8F6;
+    --text-dark: #1A0A0E;
+    --text-muted: #6B4050;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--off-white);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 56px;
+    background: rgba(250,248,246,0.95);
+    border-bottom: 1px solid rgba(220,20,60,0.12);
+    z-index: 100;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+
+  .nav-brand .logo {
+    font-weight: 900;
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    letter-spacing: -0.02em;
+  }
+
+  .nav-brand .version {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .nav-badge {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--crimson);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    border: 1px solid rgba(220,20,60,0.3);
+    padding: 0.2rem 0.65rem;
+    border-radius: 3px;
+  }
+
+  .hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+  }
+
+  .hero-content {
+    max-width: 620px;
+  }
+
+  .coming-soon-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 7vw, 5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--text-dark);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-title span {
+    color: var(--crimson);
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #4A2030;
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .hero-footer-links {
+    margin-top: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .hero-footer-links a {
+    font-size: 0.875rem;
+    color: var(--crimson);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .hero-footer-links a:hover { color: var(--crimson-dark); }
+
+  .dot {
+    color: rgba(220,20,60,0.4);
+    font-size: 0.5rem;
+    line-height: 1;
+  }
+
+  .divider {
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(220,20,60,0.2), transparent);
+  }
+
+  footer {
+    text-align: center;
+    padding: 1.5rem 2rem 2rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+  }
+
+  footer strong {
+    font-weight: 500;
+    color: var(--crimson-deep);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <span class="logo">AptaForge</span>
+    <span class="version">v1.2.0</span>
+  </div>
+  <span class="nav-badge">Coming Soon</span>
+</nav>
+
+<main class="hero">
+  <div class="hero-content">
+    <p class="coming-soon-label">Under Construction</p>
+    <h1 class="hero-title"><span>AptaForge</span> is on its way</h1>
+    <p class="hero-description">
+      A tool for generating aptamer sequences using Monte Carlo Tree Search and
+      Aptamer-Protein Interaction Classifiers. We're putting the finishing touches on things — check back soon.
+    </p>
+    <div class="hero-footer-links">
+      <a href="#">Github</a>
+      <span class="dot">●</span>
+      <a href="#">About</a>
+    </div>
+  </div>
+</main>
+
+<div class="divider"></div>
+
+<footer>
+  AptaForge &nbsp;|&nbsp; Built by <strong>Emilio Moreno</strong> in collaboration with Minnetonka High School and University Of Cincinnati
+</footer>
+
+</body>
+</html>
