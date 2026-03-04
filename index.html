@@ -3,21 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AptaForge</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<title>AptaForge — Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --crimson: #DC143C;
     --crimson-dark: #A50E2D;
     --crimson-deep: #7B0A21;
-    --crimson-light: rgba(220, 20, 60, 0.1);
     --off-white: #FAF8F6;
     --text-dark: #1A0A0E;
     --text-muted: #6B4050;
-    --bg-dark: #2C2C2C;
-    --border-light: rgba(220, 20, 60, 0.15);
-    --success: #2D7A4F;
-    --warning: #D97706;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,6 +23,8 @@
     color: var(--text-dark);
     min-height: 100vh;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   nav {
@@ -38,7 +35,7 @@
     justify-content: space-between;
     padding: 0 2.5rem;
     height: 56px;
-    background: var(--bg-dark);
+    background: #2C2C2C;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     z-index: 100;
   }
@@ -58,54 +55,51 @@
 
   .nav-brand .version {
     font-size: 0.75rem;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.7);
     font-weight: 300;
   }
 
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-  }
-
-  .nav-links a {
-    color: rgba(255,255,255,0.7);
-    text-decoration: none;
-    font-size: 0.875rem;
+  .nav-badge {
+    font-size: 0.72rem;
     font-weight: 500;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover,
-  .nav-links a.active {
     color: #FFFFFF;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 0.2rem 0.65rem;
+    border-radius: 3px;
   }
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 5rem 2rem 3rem;
-  }
-
-  .page {
-    display: none;
-  }
-
-  .page.active {
-    display: block;
-  }
-
-  /* Home Page */
   .hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 4rem 0 3rem;
+    padding: 8rem 2rem 4rem;
+  }
+
+  .hero-content {
+    max-width: 620px;
+  }
+
+  .coming-soon-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 1.5rem;
   }
 
   .hero-title {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-size: clamp(3rem, 7vw, 5rem);
     font-weight: 900;
-    line-height: 1.1;
+    line-height: 1.05;
     letter-spacing: -0.03em;
+    color: var(--text-dark);
     margin-bottom: 1.25rem;
   }
 
@@ -113,539 +107,57 @@
     color: var(--crimson);
   }
 
-  .hero-subtitle {
+  .hero-description {
     font-size: 1rem;
-    line-height: 1.7;
-    color: var(--text-muted);
-    max-width: 580px;
+    line-height: 1.75;
+    color: #4A2030;
+    max-width: 480px;
     margin: 0 auto 2.5rem;
   }
 
-  .btn {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    font-size: 0.95rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.2s;
-    border: 2px solid var(--crimson);
-    cursor: pointer;
-    font-family: 'Space Grotesk', sans-serif;
-  }
-
-  .btn-primary {
-    background: var(--crimson);
-    color: white;
-  }
-
-  .btn-primary:hover {
-    background: var(--crimson-dark);
-    border-color: var(--crimson-dark);
-    transform: translateY(-1px);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--crimson);
-  }
-
-  .btn-secondary:hover {
-    background: var(--crimson-light);
-  }
-
-  .hero-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .footer-links {
-    margin-top: 3rem;
+  .hero-footer-links {
+    margin-top: 1.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    font-size: 0.875rem;
   }
 
-  .footer-links a {
+  .hero-footer-links a {
+    font-size: 0.875rem;
     color: var(--crimson);
     text-decoration: none;
     font-weight: 500;
   }
 
-  .footer-links a:hover {
-    color: var(--crimson-dark);
-  }
+  .hero-footer-links a:hover { color: var(--crimson-dark); }
 
   .dot {
-    color: rgba(220,20,60,0.3);
+    color: rgba(220,20,60,0.4);
     font-size: 0.5rem;
+    line-height: 1;
   }
 
-  /* Job Submission Page */
-  .page-header {
-    margin-bottom: 2.5rem;
+  .divider {
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(220,20,60,0.2), transparent);
   }
 
-  .page-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 0.5rem;
-  }
-
-  .page-description {
-    font-size: 0.95rem;
+  footer {
+    text-align: center;
+    padding: 1.5rem 2rem 2rem;
+    font-size: 0.78rem;
     color: var(--text-muted);
+    font-weight: 300;
+    letter-spacing: 0.01em;
   }
 
-  .form-card {
-    background: white;
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
-    padding: 2.5rem;
-  }
-
-  .form-section {
-    margin-bottom: 2.5rem;
-  }
-
-  .form-section:last-child {
-    margin-bottom: 0;
-  }
-
-  .section-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-dark);
-    margin-bottom: 1.5rem;
-  }
-
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-
-  .form-label {
-    display: block;
-    font-size: 0.875rem;
+  footer strong {
     font-weight: 500;
-    color: var(--text-dark);
-    margin-bottom: 0.5rem;
-  }
-
-  .form-input,
-  .form-textarea {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    font-family: 'Space Grotesk', monospace;
-    font-size: 0.875rem;
-    border: 1px solid var(--border-light);
-    border-radius: 4px;
-    background: var(--off-white);
-    color: var(--text-dark);
-    transition: all 0.2s;
-  }
-
-  .form-input:focus,
-  .form-textarea:focus {
-    outline: none;
-    border-color: var(--crimson);
-    background: white;
-  }
-
-  .form-textarea {
-    min-height: 120px;
-    resize: vertical;
-    font-family: 'Courier New', monospace;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-
-  .form-hint {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-top: 0.4rem;
-  }
-
-  .submit-btn {
-    width: 100%;
-    padding: 1rem;
-    font-size: 1rem;
-  }
-
-  /* Job Results Page */
-  .job-header {
-    background: white;
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .job-title-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-  }
-
-  .job-title-text {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .job-title-text h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
-  }
-
-  .status-badge {
-    display: inline-block;
-    padding: 0.3rem 0.75rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-radius: 3px;
-    background: var(--success);
-    color: white;
-  }
-
-  .job-actions {
-    display: flex;
-    gap: 0.75rem;
-  }
-
-  .btn-small {
-    padding: 0.5rem 1.25rem;
-    font-size: 0.875rem;
-  }
-
-  .job-meta {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-  }
-
-  .meta-item {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .meta-label {
-    font-size: 0.75rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
-    margin-bottom: 0.4rem;
-  }
-
-  .meta-value {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--text-dark);
-  }
-
-  .progress-bar-container {
-    width: 100%;
-    height: 6px;
-    background: var(--border-light);
-    border-radius: 3px;
-    overflow: hidden;
-    margin-top: 1.5rem;
-  }
-
-  .progress-bar {
-    height: 100%;
-    background: var(--crimson);
-    transition: width 0.3s;
-  }
-
-  .progress-label {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-bottom: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .results-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .results-card {
-    background: white;
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
-    padding: 2rem;
-  }
-
-  .card-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-dark);
-    margin-bottom: 1.5rem;
-  }
-
-  .candidate-item {
-    border: 1px solid var(--border-light);
-    border-radius: 6px;
-    padding: 1.25rem;
-    margin-bottom: 1rem;
-    background: var(--off-white);
-  }
-
-  .candidate-item:last-child {
-    margin-bottom: 0;
-  }
-
-  .candidate-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.75rem;
-  }
-
-  .candidate-name {
-    font-weight: 600;
-    color: var(--text-dark);
-  }
-
-  .candidate-status {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--success);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .candidate-sequence {
-    font-family: 'Courier New', monospace;
-    font-size: 0.85rem;
     color: var(--crimson-deep);
-    word-break: break-all;
-    line-height: 1.6;
-    background: white;
-    padding: 0.75rem;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
-  }
-
-  .candidate-meta {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-  }
-
-  .activity-log {
-    font-family: 'Courier New', monospace;
-    font-size: 0.8rem;
-    background: var(--bg-dark);
-    color: rgba(255,255,255,0.85);
-    padding: 1.5rem;
-    border-radius: 6px;
-    max-height: 400px;
-    overflow-y: auto;
-    line-height: 1.6;
-  }
-
-  .log-entry {
-    margin-bottom: 0.25rem;
-  }
-
-  .log-time {
-    color: var(--crimson);
-    margin-right: 0.5rem;
-  }
-
-  /* Documentation Page */
-  .docs-content {
-    background: white;
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
-    padding: 3rem;
-    max-width: 900px;
-  }
-
-  .docs-content h2 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 1rem;
-    margin-top: 2.5rem;
-  }
-
-  .docs-content h2:first-child {
-    margin-top: 0;
-  }
-
-  .docs-content h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--text-dark);
-    margin-bottom: 1rem;
-    margin-top: 2rem;
-  }
-
-  .docs-content p {
-    line-height: 1.8;
-    color: var(--text-muted);
-    margin-bottom: 1.25rem;
-  }
-
-  .docs-content a {
-    color: var(--crimson);
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  .docs-content a:hover {
-    color: var(--crimson-dark);
-    text-decoration: underline;
-  }
-
-  .param-box {
-    background: var(--off-white);
-    border-left: 3px solid var(--crimson);
-    padding: 1.25rem;
-    margin: 1.5rem 0;
-    border-radius: 4px;
-  }
-
-  .param-name {
-    font-family: 'Courier New', monospace;
-    font-weight: 600;
-    color: var(--crimson-deep);
-    margin-bottom: 0.5rem;
-  }
-
-  .param-description {
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-
-  /* Job History Page */
-  .history-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-
-  .table-container {
-    background: white;
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  thead {
-    background: var(--off-white);
-  }
-
-  th {
-    text-align: left;
-    padding: 1rem 1.5rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
-    border-bottom: 1px solid var(--border-light);
-  }
-
-  td {
-    padding: 1.25rem 1.5rem;
-    font-size: 0.9rem;
-    color: var(--text-dark);
-    border-bottom: 1px solid var(--border-light);
-  }
-
-  tbody tr:last-child td {
-    border-bottom: none;
-  }
-
-  tbody tr:hover {
-    background: var(--off-white);
-  }
-
-  .job-name-link {
-    color: var(--text-dark);
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  .job-name-link:hover {
-    color: var(--crimson);
-  }
-
-  .table-actions {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .action-link {
-    font-size: 0.875rem;
-    color: var(--crimson);
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  .action-link:hover {
-    color: var(--crimson-dark);
-  }
-
-  .action-link.delete {
-    color: var(--text-muted);
-  }
-
-  .action-link.delete:hover {
-    color: var(--crimson);
-  }
-
-  @media (max-width: 768px) {
-    .form-row,
-    .job-meta,
-    .results-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .hero-buttons {
-      flex-direction: column;
-    }
-
-    nav {
-      padding: 0 1.5rem;
-    }
-
-    .nav-links {
-      gap: 1rem;
-    }
-
-    .container {
-      padding: 4rem 1.5rem 2rem;
-    }
-
-    .form-card,
-    .docs-content {
-      padding: 1.5rem;
-    }
   }
 </style>
 </head>
@@ -656,421 +168,30 @@
     <span class="logo">AptaForge</span>
     <span class="version">v1.2.0</span>
   </div>
-  <div class="nav-links">
-    <a href="#" class="nav-link active" data-page="home">Home</a>
-    <a href="#" class="nav-link" data-page="submit">Submit Job</a>
-    <a href="#" class="nav-link" data-page="results">Results</a>
-    <a href="#" class="nav-link" data-page="docs">Documentation</a>
-    <a href="#" class="nav-link" data-page="history">Job History</a>
-  </div>
+  <span class="nav-badge">Coming Soon</span>
 </nav>
 
-<!-- Home Page -->
-<div class="page active" id="home">
-  <div class="container">
-    <div class="hero">
-      <h1 class="hero-title">Welcome to <span>AptaForge</span></h1>
-      <p class="hero-subtitle">
-        Generative Exploration for Aptamer Research. A tool designed to help researchers generate aptamer sequences using Monte Carlo Tree Search and Aptamer-Protein Interaction Classifiers.
-      </p>
-      <div class="hero-buttons">
-        <button class="btn btn-primary" onclick="showPage('submit')">Submit New Job</button>
-        <button class="btn btn-secondary" onclick="showPage('docs')">Read Documentation</button>
-      </div>
-      <div class="footer-links">
-        <a href="#">Github</a>
-        <span class="dot">â</span>
-        <a href="#">Documentation</a>
-        <span class="dot">â</span>
-        <a href="#">About</a>
-      </div>
+<main class="hero">
+  <div class="hero-content">
+    <p class="coming-soon-label">Under Construction</p>
+    <h1 class="hero-title"><span>AptaForge</span> is on its way</h1>
+    <p class="hero-description">
+      A tool for generating aptamer sequences using Monte Carlo Tree Search and
+      Aptamer-Protein Interaction Classifiers. We're putting the finishing touches on things — check back soon.
+    </p>
+    <div class="hero-footer-links">
+      <a href="#">Github</a>
+      <span class="dot">●</span>
+      <a href="#">About</a>
     </div>
   </div>
-</div>
+</main>
 
-<!-- Submit Job Page -->
-<div class="page" id="submit">
-  <div class="container">
-    <div class="page-header">
-      <h1 class="page-title">Submit New Job</h1>
-      <p class="page-description">Configure and submit a new aptamer sequence generation job</p>
-    </div>
+<div class="divider"></div>
 
-    <div class="form-card">
-      <div class="form-section">
-        <h2 class="section-title">Target Configuration</h2>
-        
-        <div class="form-group">
-          <label class="form-label">Job Name</label>
-          <input type="text" class="form-input" placeholder="Aptamer Generation Job" value="Aptamer Generation Job">
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Target Protein Sequence</label>
-          <textarea class="form-textarea" placeholder="Enter amino acid sequence...">MSTAVLENPGLGRKLSDFGQETSYIEDMCNKNGAISLIFSKEKVEGLAKVSRDKKDTVPWFPFTIQE
-LDRFANQILSYGAELDAQMPGFKDPVYRAARKQFADIAYNYRHQGVPIPRVEYNEEHINTWGTVKLKSLYLKTHACYEYNHIFPLLEKYGGFHVNFTRFFL
-GGLAFRYFHCTQYIRHSGKPMVTFPERICHELLGRVPLF</textarea>
-          <p class="form-hint">The amino acid sequence of the target protein. The MCTS algorithm will generate aptamer sequences optimized for binding to this protein target.</p>
-        </div>
-      </div>
-
-      <div class="form-section">
-        <h2 class="section-title">Generation Parameters</h2>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Sequence Length (bp)</label>
-            <input type="number" class="form-input" value="40">
-            <p class="form-hint">Typical range: 10-100 bp</p>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">Number of Candidates</label>
-            <input type="number" class="form-input" value="3">
-            <p class="form-hint">Maximum: 10</p>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">MCTS Simulations</label>
-            <input type="number" class="form-input" value="5000">
-            <p class="form-hint">Range: 1000-10,000</p>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">Exploration Factor</label>
-            <input type="number" class="form-input" value="1" step="0.1">
-            <p class="form-hint">Typical values: 0.5-3</p>
-          </div>
-        </div>
-      </div>
-
-      <button class="btn btn-primary submit-btn" onclick="showPage('results')">Submit Job</button>
-    </div>
-  </div>
-</div>
-
-<!-- Results Page -->
-<div class="page" id="results">
-  <div class="container">
-    <div class="job-header">
-      <div class="job-title-row">
-        <div class="job-title-text">
-          <h1>Job 6574 | Aptamer Generation Job</h1>
-          <span class="status-badge">Complete</span>
-        </div>
-        <div class="job-actions">
-          <button class="btn btn-secondary btn-small">Cancel Job</button>
-          <button class="btn btn-primary btn-small">Export Results</button>
-        </div>
-      </div>
-
-      <div class="job-meta">
-        <div class="meta-item">
-          <span class="meta-label">Started</span>
-          <span class="meta-value">8:02:49 PM</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Elapsed</span>
-          <span class="meta-value">00:00</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Candidates</span>
-          <span class="meta-value">3</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Total Iterations</span>
-          <span class="meta-value">120</span>
-        </div>
-      </div>
-
-      <div class="progress-label">
-        <span>Overall Progress</span>
-        <span>100%</span>
-      </div>
-      <div class="progress-bar-container">
-        <div class="progress-bar" style="width: 100%"></div>
-      </div>
-    </div>
-
-    <div class="results-grid">
-      <div class="results-card">
-        <h2 class="card-title">Generated Sequences</h2>
-        
-        <div class="candidate-item">
-          <div class="candidate-header">
-            <span class="candidate-name">Candidate 1</span>
-            <span class="candidate-status">Complete</span>
-          </div>
-          <div class="candidate-sequence">TGTTGTGGCATGGGGGCATTTGGAAGGTGTTAACGGCAGC</div>
-          <div class="candidate-meta">40/40 nucleotides</div>
-        </div>
-
-        <div class="candidate-item">
-          <div class="candidate-header">
-            <span class="candidate-name">Candidate 2</span>
-            <span class="candidate-status">Complete</span>
-          </div>
-          <div class="candidate-sequence">TCACTATTGGTCCAGTCCAATTACCTCCCAATTACTGGGG</div>
-          <div class="candidate-meta">40/40 nucleotides</div>
-        </div>
-
-        <div class="candidate-item">
-          <div class="candidate-header">
-            <span class="candidate-name">Candidate 3</span>
-            <span class="candidate-status">Complete</span>
-          </div>
-          <div class="candidate-sequence">CTCTCATTTCAAAACTTCGTCTTAAATTGAAATAGGACAC</div>
-          <div class="candidate-meta">40/40 nucleotides</div>
-        </div>
-      </div>
-
-      <div class="results-card">
-        <h2 class="card-title">Activity Log</h2>
-        <div class="activity-log">
-          <div class="log-entry"><span class="log-time">[8:02:49 PM]</span> Job submitted successfully</div>
-          <div class="log-entry"><span class="log-time">[8:02:49 PM]</span> Initializing 3 candidate sequences</div>
-          <div class="log-entry"><span class="log-time">[8:02:49 PM]</span> Target length: 40 bp</div>
-          <div class="log-entry"><span class="log-time">[8:02:50 PM]</span> Starting MCTS sequence generation</div>
-          <div class="log-entry"><span class="log-time">[8:02:50 PM]</span> Position 1 T 0.726</div>
-          <div class="log-entry"><span class="log-time">[8:02:50 PM]</span> Position 1 T 0.938</div>
-          <div class="log-entry"><span class="log-time">[8:02:50 PM]</span> Position 1 C 0.893</div>
-          <div class="log-entry"><span class="log-time">[8:02:50 PM]</span> Position 2 G 0.867</div>
-          <div class="log-entry"><span class="log-time">[8:02:50 PM]</span> Position 2 C 0.785</div>
-          <div class="log-entry"><span class="log-time">[8:02:50 PM]</span> Position 2 T 0.885</div>
-          <div class="log-entry"><span class="log-time">[8:02:50 PM]</span> Position 3 T 0.900</div>
-          <div class="log-entry"><span class="log-time">[8:02:50 PM]</span> Position 3 A 0.796</div>
-          <div class="log-entry"><span class="log-time">[8:02:50 PM]</span> Position 3 C 0.882</div>
-          <div class="log-entry"><span class="log-time">[8:02:50 PM]</span> ...</div>
-          <div class="log-entry"><span class="log-time">[8:02:52 PM]</span> Generation complete</div>
-          <div class="log-entry"><span class="log-time">[8:02:52 PM]</span> 3 sequences successfully generated</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Documentation Page -->
-<div class="page" id="docs">
-  <div class="container">
-    <div class="docs-content">
-      <h1 class="page-title">Documentation</h1>
-      <p>Complete guide to using AptaForge for aptamer sequence generation</p>
-
-      <h2>Getting Started</h2>
-      <p>AptaForge (Generative Exploration for Aptamer Research) is a web-based platform that uses Monte Carlo Tree Search (MCTS) algorithms to generate optimized aptamer sequences targeting specific proteins.</p>
-      <p>To begin generating aptamer sequences, navigate to the <a href="#" onclick="showPage('submit')">submission page</a> and configure your job parameters.</p>
-
-      <h2>Configuration Parameters</h2>
-
-      <h3>Target Configuration</h3>
-
-      <div class="param-box">
-        <div class="param-name">Job Name</div>
-        <div class="param-description">A descriptive name for your generation job. This will be used to identify your results when exporting.</div>
-      </div>
-
-      <div class="param-box">
-        <div class="param-name">Target Protein Sequence</div>
-        <div class="param-description">The amino acid sequence of the target protein. The MCTS algorithm will generate aptamer sequences optimized for binding to this protein target.</div>
-      </div>
-
-      <h3>Generation Parameters</h3>
-
-      <div class="param-box">
-        <div class="param-name">Sequence Length (bp)</div>
-        <div class="param-description">The desired length of the generated aptamer sequences in base pairs. Typical range: 10-100 bp. Longer sequences may provide more specificity but take longer to generate.</div>
-      </div>
-
-      <div class="param-box">
-        <div class="param-name">Number of Candidates</div>
-        <div class="param-description">How many candidate sequences to generate simultaneously. Maximum: 10. More candidates provide greater diversity but increase computation time.</div>
-      </div>
-
-      <div class="param-box">
-        <div class="param-name">MCTS Simulations</div>
-        <div class="param-description">The number of Monte Carlo simulations to run per nucleotide position. Higher values improve sequence quality but increase generation time. Range: 1000-10,000.</div>
-      </div>
-
-      <div class="param-box">
-        <div class="param-name">Exploration Factor</div>
-        <div class="param-description">Controls how greedily the selection process is during MCTS. Higher values encourage exploration of less optimal nucleotides, potentially leading to more diverse sequences. Typical values: 0.5-3.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Job History Page -->
-<div class="page" id="history">
-  <div class="container">
-    <div class="history-header">
-      <div class="page-header">
-        <h1 class="page-title">Job History</h1>
-        <p class="page-description">View and manage your previous aptamer generation jobs</p>
-      </div>
-      <button class="btn btn-primary" onclick="showPage('submit')">New Job</button>
-    </div>
-
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Job Name</th>
-            <th>Date</th>
-            <th>Duration</th>
-            <th>Target</th>
-            <th>Length</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="#" class="job-name-link" onclick="showPage('results')">Beta-2 Adrenergic Receptor Aptamer</a></td>
-            <td>Dec 19, 25</td>
-            <td>02:34</td>
-            <td>Beta 2 Adrenergic Receptor (...</td>
-            <td>40 bp</td>
-            <td>
-              <div class="table-actions">
-                <a href="#" class="action-link" onclick="showPage('results')">View</a>
-                <a href="#" class="action-link">Export</a>
-                <a href="#" class="action-link delete">Delete</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><a href="#" class="job-name-link">GPCR Binding Study</a></td>
-            <td>Dec 18, 25</td>
-            <td>01:52</td>
-            <td>G Protein-Coupled Receptor ...</td>
-            <td>35 bp</td>
-            <td>
-              <div class="table-actions">
-                <a href="#" class="action-link">View</a>
-                <a href="#" class="action-link">Export</a>
-                <a href="#" class="action-link delete">Delete</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><a href="#" class="job-name-link">Kinase Inhibitor Test</a></td>
-            <td>Dec 17, 25</td>
-            <td>03:12</td>
-            <td>Protein Kinase A (3V79)</td>
-            <td>45 bp</td>
-            <td>
-              <div class="table-actions">
-                <a href="#" class="action-link">View</a>
-                <a href="#" class="action-link">Export</a>
-                <a href="#" class="action-link delete">Delete</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><a href="#" class="job-name-link">Short Sequence Optimization</a></td>
-            <td>Dec 16, 25</td>
-            <td>00:45</td>
-            <td>Tyrosine Kinase (SUMO)</td>
-            <td>25 bp</td>
-            <td>
-              <div class="table-actions">
-                <a href="#" class="action-link">View</a>
-                <a href="#" class="action-link delete">Delete</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><a href="#" class="job-name-link">High-Affinity Aptamer Generation</a></td>
-            <td>Dec 15, 25</td>
-            <td>04:23</td>
-            <td>Insulin Receptor (6GF)</td>
-            <td>50 bp</td>
-            <td>
-              <div class="table-actions">
-                <a href="#" class="action-link">View</a>
-                <a href="#" class="action-link">Export</a>
-                <a href="#" class="action-link delete">Delete</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><a href="#" class="job-name-link">Exploratory Run Alpha</a></td>
-            <td>Dec 14, 25</td>
-            <td>00:12</td>
-            <td>Custom Protein Sequence</td>
-            <td>30 bp</td>
-            <td>
-              <div class="table-actions">
-                <a href="#" class="action-link">View</a>
-                <a href="#" class="action-link delete">Delete</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><a href="#" class="job-name-link">Multi-Candidate Comparison</a></td>
-            <td>Dec 13, 25</td>
-            <td>02:56</td>
-            <td>Epidermal Growth Factor Rec...</td>
-            <td>40 bp</td>
-            <td>
-              <div class="table-actions">
-                <a href="#" class="action-link">View</a>
-                <a href="#" class="action-link">Export</a>
-                <a href="#" class="action-link delete">Delete</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><a href="#" class="job-name-link">Rapid Generation Test</a></td>
-            <td>Dec 12, 25</td>
-            <td>01:18</td>
-            <td>Thrombin Protein</td>
-            <td>20 bp</td>
-            <td>
-              <div class="table-actions">
-                <a href="#" class="action-link">View</a>
-                <a href="#" class="action-link">Export</a>
-                <a href="#" class="action-link delete">Delete</a>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<script>
-  function showPage(pageId) {
-    // Hide all pages
-    document.querySelectorAll('.page').forEach(page => {
-      page.classList.remove('active');
-    });
-    
-    // Show selected page
-    document.getElementById(pageId).classList.add('active');
-    
-    // Update nav links
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.classList.remove('active');
-      if (link.dataset.page === pageId) {
-        link.classList.add('active');
-      }
-    });
-    
-    // Scroll to top
-    window.scrollTo(0, 0);
-  }
-  
-  // Handle nav link clicks
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      showPage(link.dataset.page);
-    });
-  });
-</script>
+<footer>
+  AptaForge &nbsp;|&nbsp; Built by <strong>Emilio Moreno</strong> in collaboration with Minnetonka High School and University Of Cincinnati
+</footer>
 
 </body>
 </html>
